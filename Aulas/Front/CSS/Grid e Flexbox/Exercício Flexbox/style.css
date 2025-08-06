@@ -1,0 +1,66 @@
+ body {
+     font-family: sans-serif;
+     background: #f9f9f9;
+     padding: 20px;
+ }
+
+ h2 {
+     background: #4caf50;
+     color: white;
+     padding: 10px;
+ }
+
+ .exercicio {
+     border: 2px dashed #ccc;
+     padding: 15px;
+     margin: 20px 0;
+     background: #fff;
+ }
+
+ .container {
+     border: 1px solid #999;
+     margin-top: 10px;
+     padding: 10px;
+     display: flex;
+     text-align: center;
+
+ }
+
+ .item {
+     background: #2196f3;
+     color: white;
+     padding: 10px;
+     margin: 5px;
+     flex: 1;
+     min-width: none;
+     height: 15vh;
+ }
+ .ex1{
+    justify-content: center;
+    height: 5vh
+ }
+
+ .ex2{
+    justify-content: space-between;
+    gap: -50px;
+
+ }
+
+ .ex3{
+    align-items: flex-end;
+    justify-content: flex-end;
+ }
+
+ .ex4{
+    flex-direction: column;
+ }
+ .ex5{
+    justify-content: center;
+    gap: 5px;
+ }
+
+
+.ex7{
+    flex-wrap: wrap;
+}
+
