@@ -118,7 +118,7 @@ p {
 
 .cards{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax (280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -127,15 +127,17 @@ p {
     padding: 2rem;
     border-radius: 1rem;
     transition: 0.3s ease;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 0 0 transparent;
   
 }
-.card :hover{
+.card:hover{
     background: #1a1a1a;
     transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
-.car img{
+.card img{
     width: 100%;
     height: 160px;
     object-fit: cover;
@@ -146,7 +148,7 @@ p {
 
 .card, h3{
     font-size: 1.1rem;
-    color: #fff;
+    color: #eee;
     font-weight: 500;
 }
 
@@ -181,4 +183,8 @@ p {
     opacity: 0.8;
     transition: opacity 0.3 ease;
     filter: grayscale();
+}
+.clients-logos img:hover{
+    opacity: 1;
+    filter: grayscale(0%);
 }
