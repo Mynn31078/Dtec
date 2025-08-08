@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fef9f6;
+    color: #3e2c1c;
+}
+
+header {
+    background-color: #5e3829;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 20px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#mensagem {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.botao-card img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.botao-card {
+    display: flexbox;
+    border-radius: 10px;
+    justify-content: center;
+    width: 20%;
+    background-color: #fef9f6;
+    border-color: #5e3829;
+}
+
+.cartoes {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    gap: 40px;
+
+}
+
+.botao-card:hover {
+    background-color: #f4b17aa5;
+    scale: 1.05;
+    transition: background-color 0.5s ease;
+}
+
+footer {
+    text-align: center;
+    margin-top: 80px;
+    background-color: #3e2c1c;
+    color: #fff;
+    height: 90%;
+    padding: 5px;
+}
+
+.produtos-grid {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 40px;
+}
+
+.produto-card {
+    display: flexbox;
+    border-radius: 10px;
+    justify-content: center;
+    width: 30%;
+    background-color: #fef9f6;
+    border-color: #e0dfde;
+    margin-top: 20px;
+    height: 370px;
+}
+
+.produto-card img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.produto-card:hover {
+    background-color: #f4b17aa5;
+    scale: 1.05;
+    transition: background-color 0.5s ease;
+}
+
