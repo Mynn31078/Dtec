@@ -1,0 +1,56 @@
+body{
+    background-color: rgb(17, 86, 102);
+    justify-items: center;
+
+}
+
+.container{
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 10px;
+    background-color: white;
+    width: 500px;
+    height: 100vh;
+    padding: 20px;
+}
+
+.imc-header{
+    background-color: rgb(17, 86, 102);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    height: 6vh;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    padding-left: 15px;
+}
+
+
+.imc-row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    height: 4vh;
+    align-items: center;
+    margin: 10px;
+}
+
+.imc-table{
+    
+    width: 90%;
+    border: solid 1px rgba(128, 128, 128, 0.427);
+    border-radius: 10px;
+
+}
+
+.peso{
+    width: 98%;
+}
+
+.altura{
+   width: 98%; 
+}
+
+button
