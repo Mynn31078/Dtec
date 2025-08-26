@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .item:nth-child(2) {
+            height: 60px;
+        }
+
+        .item:nth-child(3) {
+            height: 100px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 100vh;
+        }
+
+        .item {
+            background-color: hotpink;
+            border: solid 1.5px black;
+        }
+
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .item1 {
+            background-color: indigo;
+            flex: 0 1 200px;
+            border: dashed 1.5px;
+        }
+
+        .container4 {
+            margin-top: 80px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            text-align: center;
+
+        }
+
+        .item3 {
+            background-color: rgb(164, 184, 184);
+            width: 18px;
+            height: 25px;
+            padding-top: 5px;
+            border: solid 1.4px black;
+        }
+
+        .i3 {
+            order: 1;
+        }
+
+        .i1 {
+            order: 2;
+        }
+
+        .i2 {
+            order: 3;
+        }
+
+        .container5 {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            gap: 12px;
+        }
+
+        .item4 {
+            background-color: rgb(62, 150, 217);
+            border: solid 1.4px black;
+        }
+
+        .item5 {
+            align-self: flex-end;
+        }
+
+        .nav {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 10px;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container6 {
+            background-color: rgb(139, 248, 171);
+        }
+
+        .container7 {
+            margin-top: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Desktop */
+        .item6 {
+            flex: 0 1 30%;
+            background-color: coral;
+            border: solid 1.3px;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            .item6 {
+                flex-basis: 48%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .item6 {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="item">Baixo</div>
+        <div class="item">Médio (60px)</div>
+        <div class="item">Alto (100px)</div>
+    </div>
+
+    <div class="container2">
+        <div class="item1">Card 1</div>
+        <div class="item1">Card 2</div>
+        <div class="item1">Card 3</div>
+        <div class="item1">Card 4</div>
+        <div class="item1">Card 5</div>
+        <div class="item1">Card 6</div>
+        <div class="item1">Card 7</div>
+        <div class="item1">Card 8</div>
+    </div>
+
+    <div class="container4">
+        <div class="item3 i1">1</div>
+        <div class="item3 i2">2</div>
+        <div class="item3 i3">3</div>
+    </div>
+
+    <div class="container5">
+        <div class="item4">Item 1</div>
+        <div class="item4">Item 2</div>
+        <div class="item4 item5">Item 3</div>
+    </div>
+
+    <nav class="nav container6">
+        <div class="logo">LOGO</div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Cursos</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="container7">
+        <div class="item6">Card 1</div>
+        <div class="item6">Card 2</div>
+        <div class="item6">Card 3</div>
+        <div class="item6">Card 4</div>
+        <div class="item6">Card 5</div>
+        <div class="item6">Card 6</div>
+    </div>
+</body>
+
+</html>
