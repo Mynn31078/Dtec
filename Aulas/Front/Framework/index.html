@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .col-4 {
+            border: solid 1px black;
+            background-color: rgb(254, 231, 81);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm">
+                Uma de três colunas
+            </div>
+            <div class="col-sm">
+                Uma de três colunas
+            </div>
+            <div class="col-sm">
+                Uma de três colunas
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                1 de 3
+            </div>
+            <div class="col-6">
+                2 de 3 (maior)
+            </div>
+            <div class="col">
+                3 de 3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                1 de 3
+            </div>
+            <div class="col-5">
+                2 de 3 (maior)
+            </div>
+            <div class="col">
+                3 de 3
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+            <div class="col-4">
+                Uma de duas colunas
+            </div>
+        </div>
+    </div>
+    <div class="media">
+        <img class="align-self-center mr-3"
+            src="https://fisioanimal.com/blog/wp-content/uploads/2019/06/Filhote-Cachorro-900x628.jpg" height="64px"
+            alt="Imagem de exemplo genérica">
+        <div class="media-body">
+            <h5 class="mt-0">Mídia centralizada</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+        <div class="card-body">
+            <h5 class="card-title">Título do card</h5>
+            <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo
+                do card.</p>
+            <a href="#" class="btn btn-primary">Visitar</a>
+        </div>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="https://stage.optimumpet.com.br/media/uploads/2023/05/anos-vive-gato-01-1024x683.webp"
+                    alt="Primeiro Slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://s2-extra.glbimg.com/U9ItCDNbTTpY0EJfys3qlBSgatw=/0x0:2500x1663/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f551ea7087a47f39ead75f64041559a/internal_photos/bs/2025/o/N/JwyetlTjOs7sQ1Gb21bw/gato-bonito-passar-tempo-dentro-de-casa1.jpg"
+                    alt="Segundo Slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://fisiocarepet.com.br/wp-content/uploads/2024/09/pexels-sadi-gokpinar-321165339-19480426-scaled-e1727711048252-1024x648.jpg"
+                    alt="Terceiro Slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+</body>
+
+</html>
