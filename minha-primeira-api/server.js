@@ -65,8 +65,10 @@ app.delete('/usuarios/:id', (req, res) => {
 })
 
 app.post('/usuarios', (req, res) => {
+    const ultimoId = usuarios.reduce((max, usuario) => Math.max(max, usuario.id), 0)
+
     const novoUsuario = {
-        id: usuarios.length + 1,
+        id: ultimoId + 1,
         nome: req.body.nome,
         idade: req.body.idade
     };
