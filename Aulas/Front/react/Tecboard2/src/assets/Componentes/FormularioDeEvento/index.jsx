@@ -4,6 +4,7 @@ import { CampoDeFormulario } from "../CampoDeFormulario"
 import { Label } from "../Label";
 import { TituloFormulario } from "../TituloDeFormulario";
 import {VemLista} from "../VemLista";
+import { Botao } from '../Botão';
 export function FormularioDeEvento() {
   return (
     <form className='form-evento'>
