@@ -1,5 +1,6 @@
 
 import './App.css'
+import { Banner } from './assets/Componentes/Banner';
 import { FormularioDeEvento } from './assets/Componentes/FormularioDeEvento';
 import { Tema } from './assets/Componentes/Tema';
 //function no React é Componente
@@ -31,16 +32,32 @@ function App() {
       nome: 'cloud'
     }
   ]
+  const eventos = [
+    {
+      capa: 'http://..',
+      tema: temas[0],
+      data: new Date(),
+      titulo: 'Mulheres no Front'
+    }
+  ]
   return (
     <main>
       <header>
         <img src="/logo.png" alt="Logo" />
       </header>
 
+      <Banner />
       <FormularioDeEvento> </FormularioDeEvento>
-      <section>
-        <Tema tema={temas[0]}/>
-      </section>
+
+      {temas.map(function (item) {
+        return(
+        <section key={item.id}>
+          <Tema tema={item} />
+          <CardEvento evento={eventos[0]}/>
+        </section>
+        )
+      })}
+
 
     </main>
   )
