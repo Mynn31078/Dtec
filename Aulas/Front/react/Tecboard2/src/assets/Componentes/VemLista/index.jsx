@@ -1,11 +1,22 @@
 import '../VemLista/VemLista.css'
 
-export function VemLista () {
+export function VemLista({ itens, ...rest }) {
     return (
-        <select className='lista-suspensa-form'>
-            <option value=""></option>
-            <option value="">São Paulo</option>
-            <option value="">Santa Catarina</option>
+        <select {...rest} defaultValue="" className='vem-lista-form'>
+            
+            <option disabled value=''> Selecione uma opção</option>
+            
+            {itens.map(function (item)  {
+                return(
+                    <option key={item.id} value={item.id}>
+                            {item.nome}
+                    </option>
+                )
+            }
+            
+        )}
+            
         </select>
     )
+
 }
