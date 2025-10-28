@@ -7,22 +7,43 @@ const express = require('express');
 const cors = require('cors');
 
 //Iniciar o Mongoose pacote MONGODB
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
+//Importação Models
+const Pessoa = require('./models/Pessoa')
+const User = require('./models/User')
+
 
 const mongoURI = process.env.MONGO_URI
 const PORT = process.env.PORT || 3000
+const JWT_SECRET = process.env.JWT_SECRET
 
 mongoose.connect(mongoURI)
     .then(() => console.log("Conectado ao MongoDB"))
     .catch(err => console.error("Erro de conexão", err));
 
-const usuarioSchema = new mongoose.Schema({
-    nome: { type: String, required: true },
-    idade: { type: Number, required: true }
-}, { timestamps: true })
+//Função geradora de Token
+const generateToken = (id) => {
+    return jwt.sign({ id }, JWT_SECRET, { expiresIn: "1d" })
+}
 
-//Modelo Collection
-const Usuario = mongoose.model('Usuario', usuarioSchema)
+//Função protetora dos endpoints
+const protect = (req, res, next) => {
+    let token;
+
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        try {
+            token = req.headers.authorization.split(' ')[1];
+            jwt.verify(token, JWT_SECRET);
+            next()
+        } catch (error) {
+            return res.status(401).json({ mensagem: "Token Inválido" })
+        }
+    }
+}
+
 
 //Criar a Aplicação 
 const app = express();
@@ -42,7 +63,7 @@ app.get('/', (req, res) => {
 
 app.get('/usuarios', async (req, res) => {
     try {
-        const usuarios = await Usuario.find({})
+        const usuarios = await Pessoa.find({})
         res.json(usuarios)
     } catch (error) {
         res.status(500).json({ mensagem: "Erro ao buscar usuários", erro: error.message })
@@ -53,7 +74,7 @@ app.get('/usuarios', async (req, res) => {
 app.get('/usuarios/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const usuario = await Usuario.findById(id);
+        const usuario = await Pessoa.findById(id);
 
         if (usuario) {
             res.json(usuario)
@@ -68,7 +89,7 @@ app.get('/usuarios/:id', async (req, res) => {
 app.get('/usuarios/nome/:nome', async (req, res) => {
     try {
         const buscaNome = req.params.nome
-        const resultados = await Usuario.find({
+        const resultados = await Pessoa.find({
             nome: { $regex: buscaNome, $options: 'i' }
         });
         if (resultados > 0) {
@@ -86,7 +107,7 @@ app.get('/usuarios/nome/:nome', async (req, res) => {
 app.delete('/usuarios/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const usuarioDeletado = await Usuario.findByIdAndDelete(id);
+        const usuarioDeletado = await Pessoa.findByIdAndDelete(id);
 
         if (!usuarioDeletado) {
             return res.status(404).json({ mensagem: "Usuário Não Encontrado" })
@@ -99,7 +120,7 @@ app.delete('/usuarios/:id', async (req, res) => {
 
 app.post('/usuarios', async (req, res) => {
     try {
-        const novoUsuario = await Usuario.create({
+        const novoUsuario = await Pessoa.create({
             nome: req.body.nome,
             idade: req.body.idade
         });
@@ -115,7 +136,7 @@ app.put('/usuarios/:id', async (req, res) => {
         const id = req.params.id
         const nome = req.body.nome
         const idade = req.body.idade
-        const usuarioAtualizado = await Usuario.findByIdAndUpdate(
+        const usuarioAtualizado = await Pessoa.findByIdAndUpdate(
             id,
             { nome, idade },
             { new: true, runValidators: true }
@@ -133,7 +154,7 @@ app.put('/usuarios/:id', async (req, res) => {
 app.get('/usuario/idade/:idade', async (req, res) => {
     try {
         const buscaIdade = req.params.idade
-        const resultados = await Usuario.find({
+        const resultados = await Pessoa.find({
             idade: buscaIdade
         });
         if (resultados > 0) {

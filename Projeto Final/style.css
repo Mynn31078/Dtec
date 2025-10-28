@@ -1,0 +1,53 @@
+.btn {
+    background-color: orange;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(239, 156, 4);
+    transition: 0.5s;
+}
+
+.logo-nome {
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #6EC1E4;
+    margin-top: 10px;
+}
+
+.nav-link {
+    color: #2c8eb8;
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    color: #6EC1E4;
+    transition: 0.8s;
+}
+
+.container {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #c6edfe;
+    padding: 100px;
+    border-radius: 10px;
+}
+
+.texto-container {
+    font-weight: 700;
+    font-family: Montserrat;
+    font-size: 35px;
+}
+
+.btn-outline-success {
+    background-color: #23b6f5;
+    border: none;
+}
+
+.btn-outline-success:hover {
+    background-color: #098dc6;
+    transition: 0.8s;
+}
