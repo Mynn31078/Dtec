@@ -104,7 +104,7 @@ app.get('/usuarios/nome/:nome', async (req, res) => {
 
 })
 
-app.delete('/usuarios/:id', async (req, res) => {
+app.delete('/usuarios/:id', protect, async (req, res) => {
     try {
         const id = req.params.id;
         const usuarioDeletado = await Pessoa.findByIdAndDelete(id);
@@ -116,6 +116,7 @@ app.delete('/usuarios/:id', async (req, res) => {
     } catch (error) {
         res.status(404).json({ mensagem: "Erro ao Deletar", erro: error.message })
     }
+
 })
 
 app.post('/usuarios', async (req, res) => {
@@ -166,6 +167,43 @@ app.get('/usuario/idade/:idade', async (req, res) => {
         console.error("Erro na Busca", error);
         res.status(500).json({ mensagem: "Erro no Servidor", erro: error.message })
     }
+})
+
+//ROTAS ADMIN - CRIAÇÃO DE USUÁRIO
+app.post('/api/register-admin', async (req, res) => {
+    const { email, password } = req.body
+    try {
+        const userExists = await User.findOne({ email })
+        if (userExists) {
+            return res.status(400).json({ mensagem: "Usuário já existe" })
+        }
+        const user = await User.create({ email, password })
+        res.status(201).json({ mensagem: "Usuário criado com sucesso" })
+    }
+    catch (error) {
+        res.status(500).json({ mensagem: "Erro no registro", erro: error.message })
+    }
+})
+
+//ROTA DE LOGIN
+app.post('/api/login-admin', async (req, res) => {
+    const { email, password } = req.body
+    try {
+        const user = await User.findOne({ email }).select('+password');
+
+        if (user && (await user.matchPassword(password))) {
+            res.json({
+                email: user.email,
+                token: generateToken(user._id),
+                mensagem: "Login Realizado"
+            })
+        } else {
+            res.status(401).json({ mensagem: "Credencial Inválida" })
+        }
+    } catch (error) {
+        res.status(500).json({ mensagem: "Erro de Login", erro: error.message })
+    }
+
 })
 
 //Inicia o servidor 

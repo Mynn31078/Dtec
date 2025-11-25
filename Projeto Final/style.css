@@ -1,3 +1,9 @@
+body {
+    background-color: #edfbfe;
+    overflow-x: hidden;
+    font-family: Montserrat;
+}
+
 .btn {
     background-color: orange;
     border-radius: 10px;
@@ -12,7 +18,6 @@
 }
 
 .logo-nome {
-    font-family: Montserrat;
     font-weight: bold;
     color: #6EC1E4;
     margin-top: 10px;
@@ -23,10 +28,54 @@
     font-weight: 400;
 }
 
+.nav-item {
+    display: flex;
+    align-items: flex-end;
+}
+
+.nav-perfil{
+    margin-top: 20px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .nav-link:hover {
     color: #6EC1E4;
     transition: 0.8s;
 }
+
+.navbar {
+    background-color: #edfbfe;
+    padding: 10px 40px;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.navbar-nav img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 .container {
     margin-top: 20px;
@@ -38,7 +87,6 @@
 
 .texto-container {
     font-weight: 700;
-    font-family: Montserrat;
     font-size: 35px;
 }
 
@@ -50,4 +98,212 @@
 .btn-outline-success:hover {
     background-color: #098dc6;
     transition: 0.8s;
+}
+
+.botao-categoria {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #e2e5e5;
+    height: 160px;
+    width: 273px;
+    background-color: #ffffff;
+    font-weight: 600;
+}
+
+.form-control {
+    box-shadow: 0 4px 8px rgba(29, 29, 29, 0.1);
+    height: 48px;
+}
+
+.descricao {
+    font-weight: 400;
+    color: rgb(76, 76, 76);
+    height: 10%;
+}
+
+.botao-categoria:hover {
+    cursor: pointer;
+    scale: 0.9;
+    transition: 0.3s;
+}
+
+.botoes-categoria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.material-symbols-outlined {
+    color: orange;
+}
+
+.card {
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.col {
+    gap: 2;
+}
+
+.titulo-categoria {
+    margin-left: 5%;
+    margin-top: 80px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+
+.titulo-botao {
+    margin-top: 120px;
+    margin-left: 5%;
+    font-weight: 600;
+}
+
+.footer {
+    display: flex;
+    margin-top: 100px;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 50px 5%;
+    gap: 5%;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer div p {
+    margin: 6px 0;
+    color: #7f7f7f;
+    font-size: 15px;
+}
+
+.footer .titulo-footer {
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #000000e5;
+    letter-spacing: 1px;
+}
+
+.footer3 input {
+    padding: 7px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    width: 220px;
+    margin-top: 8px;
+}
+
+.btnf {
+    margin-bottom: 3px;
+}
+
+.titulo-footer {
+    font-weight: 600;
+}
+
+.footer-frase {
+    text-align: center;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0;
+    margin: 0;
+    background-color: #ffffff;
+    border-top: 1px solid #dbeeff;
+}
+
+.input-footer input {
+    border-radius: 100px;
+}
+
+.container-perfil {
+    padding: 15px;
+    background-color: white;
+}
+
+.titulo-perfil {
+    margin-left: 170px;
+    margin-top: 30px;
+    text-align: center;
+    color: orange;
+    font-weight: 600;
+}
+
+.tipo-de-conta {
+    margin-left: 55px;
+    text-align: center;
+}
+
+.switch {
+    margin-top: 40px;
+    float: right;
+    position: relative;
+    width: 50px;
+    height: 25px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: #6EC1E4;
+}
+
+input:checked+.slider::before {
+    transform: translateX(25px);
+}
+
+.online{
+    margin-right: 10px;
+    margin-top: 43px;
+    float: right;
+}
+
+.container-rota,
+.container-rota1 {
+    background-color: #c6edfe;
+}
+
+.editar-fperfil {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 570px;
+}
+
+.btn-perfil{
+    border: white;
+   
+    width: 370px;
+    align-items: center;
+    background-color: white;
+}
+
+.btn-perfil:hover{
+     box-shadow: 0px 4px 8px #3030302c;
+     transition: 0.5s;
 }

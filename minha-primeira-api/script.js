@@ -1,7 +1,4 @@
 
-
-
-
 //Criando uma constante com o endereço da API 
 const API_URL = `http://localhost:3002/usuarios`;
 
@@ -18,6 +15,22 @@ const editIdInput = document.getElementById('editId');
 const editNameInput = document.getElementById('editName')
 const editAgeInput = document.getElementById('editAge')
 
+//Seleção de elementos Modal de login
+const loginModal = document.getElementById('loginModal')
+const btnLoginModal = document.getElementById('btnLoginModal')
+const btnCancelLogin = document.getElementById('btnCancelLogin')
+const adminLoginForm = document.getElementById('adminLoginForm')
+const adminAuthStatus = document.getElementById('adminAuthStatus')
+
+//Seleção de Elementos MODAL DE REGISTRO
+const registerModal = document.getElementById('registerModal')
+const btnRegisterModal = document.getElementById('btnRegisterModal')
+const btnCancelRegister = document.getElementById('btnCancelRegister')
+const adminRegisterForm = document.getElementById('adminRegisterForm')
+const adminRegisterStatus = document.getElementById('adminRegisterStatus')
+
+//Variável global para o token
+let authToken = "";
 
 //CRIAÇÃO DE FUNÇÕES
 function fetchAndRenderUsers() {
@@ -67,14 +80,86 @@ function editUser(userId, userData) {
 }
 
 function deleteUser(userId) {
+    if (!authToken) {
+        adminAuthStatus.style.color = 'orange';
+        adminAuthStatus.textContent = "Faça Login para deletar"
+        return
+    }
     fetch(`${API_URL}/${userId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            "Authorization": `Bearer ${authToken}`
+        }
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 401) {
+                adminAuthStatus.style.color = 'red';
+                adminAuthStatus.textContent = "Não Autorizado";
+                return response.json().then(err => Promise.reject(err))
+            }
+            return response.json()
+        })
         .then(() => {
             fetchAndRenderUsers()
         })
-        .catch(error => console.error('Erro ao excluir usuário', error))
+        .catch(error => console.error("Erro ao excluir", error.message))
+}
+
+//FUNÇÃO PARA CRIAR CONTA - Registrar Administrador
+function handleAdminRegister(email, password) {
+    adminRegisterStatus.textContent = "Registrando...";
+    adminAuthStatus.style.color = "blue";
+
+    fetch('http://localhost:3002/api/register-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.mensagem && data.mensagem.includes('sucesso')) {
+                adminRegisterStatus.style.color = "green";
+                adminRegisterStatus.textContent = "Conta criada com sucesso"
+                setTimeout(() => {
+                    registerModal.style.display = 'none';
+                    document.getElementById('regUsername').value = ''
+                    document.getElementById('regPassword').value = ''
+                }, 2000)
+            } else {
+                adminRegisterStatus.style.color = "Red"
+                adminRegisterStatus.textContent = data.mensagem
+            }
+        })
+        .catch((error) => {
+            adminRegisterStatus.style.color = "Red"
+            adminRegisterStatus.textContent = data.mensagem
+        })
+}
+
+//FUNÇÃO PARA LOGIN
+function handleAdminLogin(email, password) {
+    fetch('http://localhost:3002/api/login-admin', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                authToken = data.token;
+                adminAuthStatus.style.color = 'green';
+                adminAuthStatus.textContent = "Login Realizado";
+                loginModal.style.display = 'none'
+            } else {
+                authToken = "";
+                adminAuthStatus.style.color = "red";
+                adminAuthStatus.textContent = data.mensagem;
+            }
+        })
+        .catch(() => {
+            adminAuthStatus.style.color = "red";
+            adminAuthStatus.textContent = "Erro de Rede ou Servidor"
+        })
 }
 
 function renderUsers(users) {
@@ -148,9 +233,52 @@ btnCancelEdit.addEventListener('click', () => {
     editModal.style.display = 'none'
 })
 
+
+
+//LISTENER MODAL LOGIN
+btnLoginModal.addEventListener('click', () => {
+    loginModal.style.display = 'flex'
+})
+
+btnCancelLogin.addEventListener('click', (e) => {
+    if (e.target === editModal) {
+        editModal.style.display = 'none'
+    }
+})
+
+adminLoginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('adminUsername').value
+    const password = document.getElementById('adminPassword').value
+    handleAdminLogin(email, password)
+})
+
+//LISTENER MODAL CRIAR CONTA
+btnRegisterModal.addEventListener('click', () => {
+    registerModal.style.display = 'flex';
+    adminRegisterStatus.textContent = '';
+})
+
+btnCancelRegister.addEventListener('click', () => {
+    registerModal.style.display = 'none'
+})
+
+adminRegisterForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const email = document.getElementById(`regUsername`).value
+    const password = document.getElementById(`regPassword`).value
+    handleAdminRegister(email, password)
+})
+
 window.addEventListener('click', (e) => {
     if (e.target === editModal) {
         editModal.style.display = 'none'
+    }
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none'
+    }
+    if (e.target === registerModal) {
+        registerModal.style.display = 'none'
     }
 })
 
